@@ -1,0 +1,46 @@
+{	
+	"chats" : {
+		"chat_details": [{
+			"userName": "user1",
+			"user_messages": [{
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}, {
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}]
+				"bot_messages" : [{
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}, {
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}]
+		}, 
+		{
+		"userName": "user2",
+			"user_messages": [{
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}, {
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}]
+				"bot_messages" : [{
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}, {
+					"message_id": ""
+					"message": "",
+					"timestamp": "",
+				}]
+		}]
+	}
+}
