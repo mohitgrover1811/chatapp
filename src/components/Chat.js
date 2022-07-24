@@ -9,7 +9,7 @@ function Chat() {
     const [chat, setChat] = useState([])
     const dispatch = useDispatch()
 
-    const messages = useSelector((state) => state.reducer && state.reducer.list)
+    const messages = useSelector((state) => state.reducers.list)
     
     useEffect(() => {
      console.error(messages)
@@ -19,56 +19,18 @@ function Chat() {
         setInput(e.target.value)
     }
 
-    const handleUserMessage = () => {
-        const id = new Date().getTime()
-        const message = input
-        const author = 'user'
-        setChat([...chat, { id, message, author }])
-    }
-
-
-    const handleBotMessage = () => {
-
-        const message = input
-        const author = 'bot'
-        setTimeout(() =>
-            setChat([...chat, { id: new Date().getTime(), message, author }])
-            , 3000);
-
-    }
-
-
-    const onSubmit = () => {
-        handleUserMessage()
-        handleBotMessage()
-
-    }
-
-    useEffect(() => {
-
-    }, [])
-
-
-
-    // const botMessage = () => {
-    //     const id = new Date().getTime()
-    //     const message = input
-    //     const author = 'bot'
-    // }
-
     const onMessageSubmit = () => {
+        
         const id = new Date().getTime()
-        const message = 'hello'
+        const message = input
         const author = 'user'
-       dispatch(sendMessage( {id, message, author} ))
+       dispatch(sendMessage( {id: new Date().getTime(), message, author} ))
+       setInput('')
        setTimeout(() => {
-        dispatch(sendMessage( {id, message, author: 'bot'} ))
-       }, 3000)
+        dispatch(sendMessage( {id: new Date().getTime(), message, author: 'bot'} ))
+       }, 5000)
+      
     }
-
-
-    console.log(chat)
-
 
     return (
         <div>
