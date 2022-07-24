@@ -7,23 +7,43 @@ import ChatWindow from './ChatWindow';
 function Chat() {
     const [input, setInput] = useState('')
     const [chat, setChat] = useState([])
+    const [submitCount, setSubmitCount] = useState(0)
 
 
     const handleInputChange = (e) => {
         setInput(e.target.value)
     }
 
-    useEffect = () => {
-        console.log(chat)
+    const handleUserMessage = () => {
         const id = new Date().getTime()
         const message = input
-        const author = 'bot'
-        setTimeout(() => {
-            setChat([...chat, { id, message, author }])
-            console.log('bot')
-
-        }, 3000);
+        const author = 'user'
+        setChat([...chat, { id, message, author }])
     }
+
+
+    const handleBotMessage = () => {
+        
+        const message = input
+        const author = 'bot'
+        setTimeout(() =>
+            setChat([...chat, { id: new Date().getTime(), message, author }])
+            , 3000);
+
+    }
+
+
+    const onSubmit = () => {
+        handleUserMessage()
+        handleBotMessage()
+
+    }
+
+    useEffect(() => {
+
+    }, []) 
+
+    
 
     // const botMessage = () => {
     //     const id = new Date().getTime()
@@ -33,11 +53,12 @@ function Chat() {
 
     const onMessageSubmit = () => {
         if (input) {
-            const id = new Date().getTime()
-            const message = input
-            const author = 'user'
-            setChat([...chat, { id, message, author }])
-            setInput('')
+            onSubmit()
+            // const id = new Date().getTime()
+            // const message = input
+            // const author = 'user'
+            // setChat([...chat, { id, message, author }])
+            // setInput('')
         }
         else {
             alert('not a valid message')
